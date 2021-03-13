@@ -1,0 +1,51 @@
+#Rock,Paper and Scissor game, when you cick th click!! button, the programme runs the 2 player game, compare all the possible events and returns whoever player wins the game, if its a draw its shows DRAW!!.
+
+import random
+from tkinter import *
+
+root=Tk()
+root.title("JANKENPO GAME")
+root.geometry("600x500")
+
+l=Label(root,text="ROCK,PAPER,SCCISOR",font=('helvetica',18,'bold'),bg='yellow')
+l.pack()
+
+l2=Label(root,font=('helvetica',18,'bold'),text="",bg='olive')
+l3=Label(root,font=('helvetica',18,'bold'),text="",bg='olive')
+l4=Label(root,font=('helvetica',18,'bold'),text="",bg='red')
+
+
+event=['ROCK','PAPER','SCISSOR']
+
+def event_sel():
+    P1=random.choice(event)
+    P2=random.choice(event)
+    l2.configure(text=f"player1:{P1}")
+    l2.pack(side=LEFT)
+    l3.configure(text=f"player2:{P2}")
+    l3.pack(side=RIGHT)
+
+    if P1==P2:
+        l4.configure(text=f"DRAW")
+    elif P1=="ROCK":
+        if P2=="PAPER":
+            l4.configure(text=f"PLAYER2 WINS!!")
+        else:
+            l4.configure(text=f"PLAYER1 WINS!!")
+    elif P1=="PAPER":
+        if P2=="ROCK":
+            l4.configure(text=f"PLAYER1 WINS!!")
+        else:
+            l4.configure(text=f"PLAYER2 WINS!!")
+    elif P1=="SCISSOR":
+        if P2=="ROCK":
+            l4.configure(text=f"PLAYER2 WINS!!")
+        else:
+            l4.configure(text=f"PLAYER1 WINS!!")
+    l4.pack()
+
+b=Button(root,text="click!!!!",font=('helvetica',18,'bold'),bg='green',command=event_sel)
+b.pack(side=BOTTOM)
+
+
+root.mainloop()
